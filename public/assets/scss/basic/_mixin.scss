@@ -1,0 +1,389 @@
+@charset "utf-8";
+
+//===========================================================
+//    リンク下線
+//===========================================================
+
+@mixin underline($underline, $hover) {
+  text-decoration: if($underline, underline, none);
+
+  &:hover {
+    @if $hover {
+      text-decoration: if($underline, none, underline);
+    }
+  }
+}
+
+//===========================================================
+//    文字サイズ
+//===========================================================
+
+@mixin font-size($fontsize) {
+  font-size: ($fontsize / 10) + rem;
+}
+
+//===========================================================
+//    余白付きwidth
+//===========================================================
+
+@mixin margin-width($width, $margin) {
+  max-width: $width;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include max-screen($width + ($margin * 2)) {
+    margin-right: $margin;
+    margin-left: $margin;
+  }
+}
+
+//===========================================================
+//    グリッド
+//===========================================================
+
+@mixin grid($grids-width, $grid-width, $columns) {
+  $grid-margin-number: $columns - 1;
+  $grid-margin: ($grids-width - ($grid-width * $columns)) / $grid-margin-number;
+
+  float: left;
+  width: percentage($grid-width/$grids-width);
+  margin-top: percentage($grid-margin/$grids-width);
+  margin-left: percentage($grid-margin/$grids-width);
+
+  &:nth-child(#{$columns}n + 1) {
+    margin-left: 0;
+    clear: both;
+  }
+  &:nth-child(-n + #{$columns}) {
+    margin-top: 0;
+  }
+}
+
+//===========================================================
+//    メディアクエリ
+//===========================================================
+@mixin max-screen($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin min-screen($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin screen($min-width, $max-width) {
+  @media screen and (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+}
+
+//===========================================================
+//    clearfix
+//===========================================================
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+//===========================================================
+//    左右中央
+//===========================================================
+
+@mixin margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//===========================================================
+//    余白付きボックス
+//===========================================================
+
+@mixin whitespace {
+  @media screen and (max-width: 840px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @media screen and (max-width: 640px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media screen and (max-width: 560px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @media screen and (max-width: 480px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+//===========================================================
+//    斜めストライプ
+//===========================================================
+@mixin stripe {
+  -webkit-background-size: 3px 3px;
+  -moz-background-size: 3px 3px;
+  background-size: 3px 3px;
+  background-color: #fff;
+  background-image: -webkit-gradient(
+    linear,
+    0 100%,
+    100% 0,
+    color-stop(0.25, #e2e1d7),
+    color-stop(0.25, transparent),
+    color-stop(0.5, transparent),
+    color-stop(0.5, #e2e1d7),
+    color-stop(0.75, #e2e1d7),
+    color-stop(0.75, transparent),
+    to(transparent)
+  );
+  background-image: -webkit-linear-gradient(
+    45deg,
+    #e2e1d7 25%,
+    transparent 25%,
+    transparent 50%,
+    #e2e1d7 50%,
+    #e2e1d7 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: -moz-linear-gradient(
+    45deg,
+    #e2e1d7 25%,
+    transparent 25%,
+    transparent 50%,
+    #e2e1d7 50%,
+    #e2e1d7 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    45deg,
+    #e2e1d7 25%,
+    transparent 25%,
+    transparent 50%,
+    #e2e1d7 50%,
+    #e2e1d7 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    45deg,
+    #e2e1d7 25%,
+    transparent 25%,
+    transparent 50%,
+    #e2e1d7 50%,
+    #e2e1d7 75%,
+    transparent 75%,
+    transparent
+  );
+  background-image: linear-gradient(
+    45deg,
+    #e2e1d7 25%,
+    transparent 25%,
+    transparent 50%,
+    #e2e1d7 50%,
+    #e2e1d7 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+//===========================================================
+//    Margin auto
+//    example: @include margin-auto();
+//===========================================================
+@mixin margin-auto() {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//===========================================================
+//    Background: @include background-cover();
+//===========================================================
+@mixin background-cover() {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+//===========================================================
+//    Flexbox
+//===========================================================
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+//----------------------------------
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+  flex-wrap: $value;
+}
+//----------------------------------
+@mixin order($int: 0) {
+  -webkit-box-ordinal-group: $int + 1;
+  -webkit-order: $int;
+  -moz-order: $int;
+  -ms-flex-order: $int;
+  order: $int;
+}
+//----------------------------------
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+//----------------------------------
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  justify-content: $value;
+}
+//----------------------------------
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  align-items: $value;
+}
+//----------------------------------
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+//===========================================================
+//    Retina Images
+//===========================================================
+@mixin image-2x($image) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+    (-o-min-device-pixel-ratio: 2.6/2),
+    (-webkit-min-device-pixel-ratio: 1.3),
+    (min-device-pixel-ratio: 1.3),
+    (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: cover;
+  }
+}
+
+//===========================================================
+//    Change placeholder
+//===========================================================
+// example: @include input-placeholder {color: $grey;}
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+//===========================================================
+//    Rounded Corners
+//===========================================================
+// example: @include border-radius(3px);
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//===========================================================
+//    Animations
+//===========================================================
+// example: @include animation('slide-down 5s 3');
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+//===========================================================
+//    Inner
+//===========================================================
+@mixin inner {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  @include max-screen($screen-tb) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  @include max-screen($screen-sm) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

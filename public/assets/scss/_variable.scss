@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+//------------------------------------------------------------
+//    【必須】サイト設定 - 変数
+//------------------------------------------------------------
+
+//■フォント
+
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url("../fonts/NotoSansJP.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato-Black.ttf") format("truetype");
+}
+
+//■アニメーション
+
+$default-font: "Noto Sans JP", sans-serif;
+$lato-font: "Lato";
+
+//■アニメーション
+
+$default-transition: true;
+$default-transition-duration: 0.5s;
+
+//■マウスオーバー時のリンク画像の透過
+
+$default-img-hover: false;
+$default-img-hover-opacity: 0.7;
+
+//■ Animations
+@keyframes example {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 100vh;
+    opacity: 1;
+  }
+}
+
+//------------------------------------------------------------
+//    【カスタム】変数
+//------------------------------------------------------------
+//■サイト幅
+$width-site: 1346px;
+
+//■ブレイクポイント
+$screen-tb: 1279px;
+$screen-md: 1023px;
+$screen-sm: 767px;
+$screen-xs: 480px;
+$screen-xss: 347px;
+
+//------------------------------------------------------------
+//    Colors
+//------------------------------------------------------------
+
+$black: #000000;
+$white: #ffffff;

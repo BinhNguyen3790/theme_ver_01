@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url("../fonts/NotoSansJP.ttf") format("truetype");
+  font-display: swap; }
+
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/Lato-Black.ttf") format("truetype"); }
+
+@-webkit-keyframes example {
+  from {
+    height: 0;
+    opacity: 0; }
+  to {
+    height: 100vh;
+    opacity: 1; } }
+
+@keyframes example {
+  from {
+    height: 0;
+    opacity: 0; }
+  to {
+    height: 100vh;
+    opacity: 1; } }
+
+/***********************************************
+  Header Container
+************************************************/
+/***********************************************
+  Footer Container
+************************************************/

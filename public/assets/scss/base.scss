@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+@import "variable";
+@import "basic/mixin";
+
+@import "basic/reset";
+@import "basic/default";
+
+/*==================================================================================================
+	サイト基礎
+==================================================================================================*/
+body.theme01 {
+  color: $black;
+  font-weight: 500;
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-family: $default-font;
+  @include font-size(16);
+
+  @include max-screen($screen-tb) {
+    @include font-size(15);
+  }
+
+  @include max-screen($screen-sm) {
+    @include font-size(14);
+  }
+
+  &.fixed {
+    overflow-y: hidden;
+  }
+
+  a {
+    transition: 0.5s;
+    color: $black;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.6;
+    }
+    &[href^="tel:"] {
+      @include min-screen(1024px) {
+        cursor: auto;
+        pointer-events: none;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "html_template",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build",
+    "dev": "./node_modules/.bin/gulp run:dev",
+    "prod": "./node_modules/.bin/gulp run:prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^2.4.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-file-include": "^1.1.0",
+    "gulp-htmlhint": "^2.2.1",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^6.1.0",
+    "gulp-jsbeautifier": "^2.0.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-useref": "^3.1.2",
+    "gulp-watch": "^4.3.11",
+    "gulp-open": "^3.0.1",
+    "imagemin-pngquant": "^8.0.0",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "del": "^5.1.0"
+  }
+}

@@ -1,0 +1,18 @@
+body {
+    font-family: $default-font;
+}
+
+[type="button"],
+[type="reset"],
+[type="submit"],
+a,
+a img,
+button {
+    @if $default-transition {
+        transition: $default-transition-duration;
+    }
+}
+
+a:hover img {
+    opacity: if($default-img-hover,$default-img-hover-opacity,null);
+}
